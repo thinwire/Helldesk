@@ -17,6 +17,7 @@ _global_script_class_icons={
 
 config/name="Helldesk"
 config/description="A game about manning an average helpdesk"
+run/main_scene="res://nodes/gameworld.tscn"
 config/icon="res://icon.png"
 
 [display]

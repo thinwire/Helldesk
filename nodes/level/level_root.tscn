@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://nodes/level/table.tscn" type="PackedScene" id=1]
 [ext_resource path="res://rooms/rooms.tscn" type="PackedScene" id=2]
+[ext_resource path="res://doors/locked_door.glb" type="PackedScene" id=3]
 
 [node name="level_root" type="Node"]
 
@@ -60,3 +61,9 @@ transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 13.2532, 
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 13.2532, 0, 8.93259 )
 
 [node name="rooms" parent="." instance=ExtResource( 2 )]
+
+[node name="locked_door" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 9.99679, 0, 21.9326 )
+
+[node name="locked_door2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, -0.0032053, 0, 31.0655 )

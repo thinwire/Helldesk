@@ -9,16 +9,16 @@
 [ext_resource path="res://textures/paavo.png" type="Texture" id=7]
 [ext_resource path="res://nodes/ui/Hud.tscn" type="PackedScene" id=8]
 
-[sub_resource type="ProceduralSky" id=2]
+[sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.682353, 0.698039, 0.705882, 1 )
 sky_energy = 0.6
 ground_energy = 0.6
 sun_color = Color( 0, 0, 0, 1 )
 sun_energy = 0.0
 
-[sub_resource type="Environment" id=1]
+[sub_resource type="Environment" id=2]
 background_mode = 3
-background_sky = SubResource( 2 )
+background_sky = SubResource( 1 )
 background_color = Color( 0.0117647, 0.0117647, 0.0117647, 1 )
 ambient_light_energy = 0.24
 ambient_light_sky_contribution = 0.0
@@ -38,7 +38,7 @@ script = ExtResource( 5 )
 
 [node name="camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 5 )
-environment = SubResource( 1 )
+environment = SubResource( 2 )
 fov = 58.0
 far = 250.0
 script = ExtResource( 4 )

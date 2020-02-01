@@ -29,17 +29,7 @@ func clampAbs(num, lim):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print($trigger)
-	
-	# start animations
-	var anim = $wizard.find_node("animations");
-	anim["parameters/transition/current"] = "idle";
-	
-	var ap: AnimationPlayer = $wizard.find_node("AnimationPlayer");
-	#ap.get_animation("wizard_idle").set_loop(true);
-	#ap.get_animation("wizard_walk").set_loop(true);
-	#ap.get_animation("wizard_extinguisher").set_loop(true);
-
+	print("Player trigger ID ", $trigger)
 
 func handle_movement(delta):
 	var dx = 0.0;
@@ -74,7 +64,7 @@ func handle_animation(speed):
 		$wizard.idle();	
 	
 	# Turn wizard to face in movement direction
-	if(s > 1):
+	if(s > 0.2):
 		var target_dir = atan2(speed.x, speed.z);
 		direction += wrapf((target_dir - direction), -PI, PI) * 0.3;
 	

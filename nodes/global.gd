@@ -7,7 +7,6 @@ extends Node
 var player_health: int = 100;
 var player: KinematicBody = null;
 
-
 #
 # Table related stuff
 #

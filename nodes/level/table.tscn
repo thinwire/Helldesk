@@ -33,17 +33,22 @@ shape = SubResource( 2 )
 
 [node name="smokeParticles" type="CPUParticles" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0788, -0.965689 )
-visible = false
-emitting = false
-amount = 18
+cast_shadow = 0
+amount = 16
 lifetime = 1.56
 mesh = SubResource( 3 )
 emission_shape = 2
 emission_box_extents = Vector3( 0.3, 0.3, 0.3 )
 direction = Vector3( 1, 1, 0 )
 spread = 35.05
-gravity = Vector3( 0, 3, 0 )
+gravity = Vector3( 0, 2, 0 )
+initial_velocity_random = 0.02
 angular_velocity = 7.24
 angular_velocity_random = 0.15
+linear_accel = -1.01
+linear_accel_random = 0.02
+radial_accel = 1.01
+radial_accel_random = 0.03
+tangential_accel_random = 0.07
 [connection signal="area_entered" from="trigger" to="." method="_on_trigger_area_entered"]
 [connection signal="area_exited" from="trigger" to="." method="_on_trigger_area_exited"]

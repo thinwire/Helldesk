@@ -6,6 +6,7 @@ code = "shader_type canvas_item;
 uniform float bright = 1.0;
 uniform float dark   = 0.7;
 uniform float width  = 10.0;
+uniform float vignette = 0.6;
 
 vec3 crt_effect(in vec3 color, in float pixel_y) {
 	vec3 result;
@@ -19,12 +20,20 @@ vec3 crt_effect(in vec3 color, in float pixel_y) {
 	return result;
 }
 
-//
-// Apply a 
-//
+vec3 vignette_effect(in vec3 color, in vec2 uv) {	
+	uv *= 2.0;
+	uv -= 1.0;
+	uv *= 0.28;
+	float l = length(uv);
+	
+	return color * clamp(1.0 - pow(l, 2), vignette, 1.0);
+}
+
 void fragment() {
 	vec3 c = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0).rgb;
-	COLOR.rgb = crt_effect(c, (SCREEN_UV / SCREEN_PIXEL_SIZE).y);
+	c = crt_effect(c, (SCREEN_UV / SCREEN_PIXEL_SIZE).y);
+	c = vignette_effect(c, SCREEN_UV);
+	COLOR.rgb = c;
 }
 "
 
@@ -33,3 +42,4 @@ shader = SubResource( 1 )
 shader_param/bright = 1.0
 shader_param/dark = 0.95
 shader_param/width = 5.0
+shader_param/vignette = 0.6

@@ -56,10 +56,12 @@ visible = false
 [node name="postprocessLayer" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="crtshader" type="TextureRect" parent="postprocessLayer"]
+[node name="shader" type="TextureRect" parent="postprocessLayer"]
 material = ExtResource( 6 )
-margin_right = 1280.0
-margin_bottom = 720.0
+margin_left = -64.0
+margin_top = -64.0
+margin_right = 4032.0
+margin_bottom = 1984.0
 texture = ExtResource( 7 )
 expand = true
 __meta__ = {

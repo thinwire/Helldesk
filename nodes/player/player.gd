@@ -54,26 +54,37 @@ func handle_movement(delta):
 	var n = velocity.normalized();
 	velocity.x = n.x * l;
 	velocity.z = n.z * l;
-	
-func handle_animation(speed):
-	var s = min(speed.length(), (_lastPos - self.translation).length());
-		
-	if(s > 0.5):
-		$wizard.walk(speed.length() * 0.43);
-	else:
-		$wizard.idle();	
+
+	var speed = move_and_slide(velocity);
 	
 	# Turn wizard to face in movement direction
-	if(s > 0.2):
-		var target_dir = atan2(speed.x, speed.z);
+	# (there has to be an easier way to do this, too...)
+	var s = min(speed.length(), (_lastPos - self.translation).length());
+	var turn = false;
+	var target_dir = 0.0;
+	if s > 1.0:
+		target_dir = atan2(speed.x, speed.z);
+		turn = true;
+	elif dx != dz || dx != 0.0:
+		target_dir = atan2(dx, dz);
+		turn = true;
+	if turn:
 		direction += wrapf((target_dir - direction), -PI, PI) * 0.3;
 	
 	$wizard.rotation.y = wrapf(direction, -PI, PI);
+	return speed;
+
+	
+func handle_animation(speed):
+	var s = speed.length();
+	if(s > 0.1):
+		$wizard.walk(s * 0.43);
+	else:
+		$wizard.idle();		
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	handle_movement(delta);
-	var speed = move_and_slide(velocity);
+	var speed = handle_movement(delta);
 	handle_animation(speed);
 	
 	if Input.is_action_pressed("ui_accept"):

@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/computer_table.glb-eb00bc23248a5c20bd3e14cea7e72a4c.scn"
+path="res://.import/wizard.glb-2301b0384899207d1f6f4a99b12197c9.scn"
 
 [deps]
 
-source_file="res://objects/furnature/computer_table.glb"
-dest_files=[ "res://.import/computer_table.glb-eb00bc23248a5c20bd3e14cea7e72a4c.scn" ]
+source_file="res://wizard/wizard.glb"
+dest_files=[ "res://.import/wizard.glb-2301b0384899207d1f6f4a99b12197c9.scn" ]
 
 [params]
 

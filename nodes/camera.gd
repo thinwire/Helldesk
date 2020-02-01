@@ -1,7 +1,7 @@
 extends Camera
 
-var height = 8;
-var distance = 6;
+const height = 8;
+const distance = 6;
 
 func _ready():
 	pass # Replace with function body.

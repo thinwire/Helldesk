@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://nodes/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/level/level_root.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://nodes/gameworld.gd" type="Script" id=5]
 [ext_resource path="res://shaders/postprocess.tres" type="Material" id=6]
 [ext_resource path="res://textures/paavo.png" type="Texture" id=7]
+[ext_resource path="res://nodes/ui/Hud.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Environment" id=1]
 ambient_light_energy = 0.24
@@ -43,15 +44,19 @@ directional_shadow_blend_splits = true
 directional_shadow_depth_range = 1
 directional_shadow_max_distance = 17.4
 
-[node name="menulayer" type="CanvasLayer" parent="."]
+[node name="uiLayer" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="menulayer" instance=ExtResource( 3 )]
+[node name="Hud" parent="uiLayer" instance=ExtResource( 8 )]
+
+[node name="menuLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="menuLayer" instance=ExtResource( 3 )]
 visible = false
 
-[node name="postprocess" type="CanvasLayer" parent="."]
+[node name="postprocessLayer" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="crtshader" type="TextureRect" parent="postprocess"]
+[node name="crtshader" type="TextureRect" parent="postprocessLayer"]
 material = ExtResource( 6 )
 margin_right = 1280.0
 margin_bottom = 720.0

@@ -1,21 +1,26 @@
 extends Node
 
-var player_health: int = 100
-var player: KinematicBody = null
+#
+# Player related stuff
+#
 
-var activeTable: Node = null
-
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var player_health: int = 100;
+var player: KinematicBody = null;
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+#
+# Table related stuff
+#
+
+enum TableState {
+	ACTIVE,
+	BROKEN
+}
+
+var tableDeathTimeMin = 5;		# min time to wait before breaking computer
+var tableDeathTimeMax = 15;		# max time to wait before breaking computer
+
+var tables = [];
+var activeTable: Node = null;
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

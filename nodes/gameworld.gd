@@ -16,7 +16,8 @@ func _process(delta):
 		print("activate table ", global.activeTable)
 		
 		if(global.activeTable != null):
-			global.activeTable.stopSmoke();
+			# Fix current table
+			global.activeTable.setState(global.TableState.ACTIVE);
 	
 	
 	

@@ -15,6 +15,8 @@ func _ready():
 #func _process(delta):
 #	pass
 
+func stopSmoke():
+	$smokeParticles.emitting = false;
 
 #
 # Should trigger when player enters the trigger zone

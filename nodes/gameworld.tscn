@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://nodes/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/level/level_root.tscn" type="PackedScene" id=2]
@@ -9,14 +9,24 @@
 [ext_resource path="res://textures/paavo.png" type="Texture" id=7]
 [ext_resource path="res://nodes/ui/Hud.tscn" type="PackedScene" id=8]
 
+[sub_resource type="ProceduralSky" id=2]
+sky_top_color = Color( 0.682353, 0.698039, 0.705882, 1 )
+sky_energy = 0.6
+ground_energy = 0.6
+sun_color = Color( 0, 0, 0, 1 )
+sun_energy = 0.0
+
 [sub_resource type="Environment" id=1]
+background_mode = 3
+background_sky = SubResource( 2 )
+background_color = Color( 0.0117647, 0.0117647, 0.0117647, 1 )
 ambient_light_energy = 0.24
 ambient_light_sky_contribution = 0.0
 tonemap_mode = 2
 tonemap_exposure = 0.92
 auto_exposure_enabled = true
-ss_reflections_enabled = true
 ssao_enabled = true
+ssao_radius = 3.3
 glow_enabled = true
 
 [node name="gameworld" type="Node"]
@@ -29,20 +39,95 @@ script = ExtResource( 5 )
 [node name="camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 5 )
 environment = SubResource( 1 )
-fov = 65.0
+fov = 90.0
 far = 250.0
 script = ExtResource( 4 )
 
+[node name="point_lights" type="Node" parent="."]
+
+[node name="OmniLight" type="OmniLight" parent="point_lights"]
+transform = Transform( 0.965926, -0.198267, 0.166366, 0, 0.642788, 0.766044, -0.258819, -0.739942, 0.620885, -0.568711, 3.20165, -1.38275 )
+light_color = Color( 0.968627, 0.956863, 0.831373, 1 )
+light_energy = 0.43
+shadow_enabled = true
+omni_range = 9.3
+omni_attenuation = 4.14106
+
+[node name="OmniLight3" type="OmniLight" parent="point_lights"]
+transform = Transform( 0.965926, -0.198267, 0.166366, 0, 0.642788, 0.766044, -0.258819, -0.739942, 0.620885, -0.568711, 1.98428, 29.0839 )
+light_color = Color( 0.968627, 0.956863, 0.831373, 1 )
+light_energy = 0.43
+shadow_enabled = true
+omni_range = 9.3
+omni_attenuation = 4.14106
+
+[node name="OmniLight4" type="OmniLight" parent="point_lights"]
+transform = Transform( 0.965926, -0.198267, 0.166366, 0, 0.642788, 0.766044, -0.258819, -0.739942, 0.620885, -0.568711, 1.98428, 9.31228 )
+light_color = Color( 0.968627, 0.956863, 0.831373, 1 )
+light_energy = 0.43
+shadow_enabled = true
+omni_range = 9.3
+omni_attenuation = 4.14106
+
+[node name="OmniLight5" type="OmniLight" parent="point_lights"]
+transform = Transform( 0.965926, -0.198267, 0.166366, 0, 0.642788, 0.766044, -0.258819, -0.739942, 0.620885, -0.568711, 1.98428, 18.6428 )
+light_color = Color( 0.968627, 0.956863, 0.831373, 1 )
+light_energy = 0.43
+shadow_enabled = true
+omni_range = 9.3
+omni_attenuation = 4.14106
+
+[node name="OmniLight7" type="OmniLight" parent="point_lights"]
+transform = Transform( 0.965926, -0.198267, 0.166366, 0, 0.642788, 0.766044, -0.258819, -0.739942, 0.620885, 5.17741, 1.98428, 9.31228 )
+light_color = Color( 0.968627, 0.956863, 0.831373, 1 )
+light_energy = 0.43
+shadow_enabled = true
+omni_range = 9.3
+omni_attenuation = 4.14106
+
+[node name="OmniLight6" type="OmniLight" parent="point_lights"]
+transform = Transform( 0.965926, -0.198267, 0.166366, 0, 0.642788, 0.766044, -0.258819, -0.739942, 0.620885, 5.17741, 1.98428, 18.6428 )
+light_color = Color( 0.968627, 0.956863, 0.831373, 1 )
+light_energy = 0.43
+shadow_enabled = true
+omni_range = 9.3
+omni_attenuation = 4.14106
+
+[node name="OmniLight9" type="OmniLight" parent="point_lights"]
+transform = Transform( 0.965926, -0.198267, 0.166366, 0, 0.642788, 0.766044, -0.258819, -0.739942, 0.620885, 10.873, 1.98428, 9.31228 )
+light_color = Color( 0.968627, 0.956863, 0.831373, 1 )
+light_energy = 0.43
+shadow_enabled = true
+omni_range = 9.3
+omni_attenuation = 4.14106
+
+[node name="OmniLight8" type="OmniLight" parent="point_lights"]
+transform = Transform( 0.965926, -0.198267, 0.166366, 0, 0.642788, 0.766044, -0.258819, -0.739942, 0.620885, 10.873, 1.98428, 18.6428 )
+light_color = Color( 0.968627, 0.956863, 0.831373, 1 )
+light_energy = 0.43
+shadow_enabled = true
+omni_range = 9.3
+omni_attenuation = 4.14106
+
+[node name="OmniLight2" type="OmniLight" parent="point_lights"]
+transform = Transform( 0.965926, -0.198267, 0.166366, 0, 0.642788, 0.766044, -0.258819, -0.739942, 0.620885, 9.61153, 3.20165, -1.38275 )
+light_color = Color( 0.968627, 0.956863, 0.831373, 1 )
+light_energy = 0.43
+shadow_enabled = true
+omni_range = 9.3
+omni_attenuation = 4.14106
+
 [node name="mainLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.965926, -0.198267, 0.166366, 0, 0.642788, 0.766044, -0.258819, -0.739942, 0.620885, 0, 5, 0 )
-light_energy = 0.72
-light_indirect_energy = 0.35
+transform = Transform( 0.965926, -0.198267, 0.166366, -0.251714, -0.570054, 0.782099, -0.0602268, -0.797326, -0.600536, 5, 5, 15 )
+light_color = Color( 0.521569, 0.572549, 0.603922, 1 )
+light_energy = 0.61
+light_indirect_energy = 1.21
 light_specular = 0.31
 shadow_enabled = true
 shadow_bias = 0.0
 directional_shadow_blend_splits = true
-directional_shadow_depth_range = 1
-directional_shadow_max_distance = 17.4
+directional_shadow_bias_split_scale = 0.09
+directional_shadow_max_distance = 70.8
 
 [node name="uiLayer" type="CanvasLayer" parent="."]
 
@@ -56,12 +141,10 @@ visible = false
 [node name="postprocessLayer" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="shader" type="TextureRect" parent="postprocessLayer"]
+[node name="crtshader" type="TextureRect" parent="postprocessLayer"]
 material = ExtResource( 6 )
-margin_left = -64.0
-margin_top = -64.0
-margin_right = 4032.0
-margin_bottom = 1984.0
+margin_right = 1280.0
+margin_bottom = 720.0
 texture = ExtResource( 7 )
 expand = true
 __meta__ = {

@@ -134,11 +134,8 @@ tracks/0/keys = {
 
 [node name="wizard" instance=ExtResource( 1 )]
 
-[node name="Skeleton" parent="wizard_rig" index="0"]
-bones/17/bound_children = [ NodePath("BoneAttachment") ]
-
 [node name="BoneAttachment" type="BoneAttachment" parent="wizard_rig/Skeleton" index="7"]
-transform = Transform( -0.338598, -0.751057, 0.566802, 0.904833, -0.425154, -0.0228307, 0.258125, 0.50513, 0.823538, -0.476651, 1.09023, 0.240122 )
+transform = Transform( -0.0367261, -0.254604, 0.966347, 0.948626, -0.312978, -0.0464076, 0.314261, 0.914998, 0.253018, -0.304783, 1.07036, 0.259589 )
 bone_name = "hand_r"
 
 [node name="extinguisherParticles" type="CPUParticles" parent="wizard_rig/Skeleton/BoneAttachment" index="0"]

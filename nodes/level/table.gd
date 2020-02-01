@@ -1,6 +1,5 @@
 extends StaticBody
 
-
 var state = global.TableState.ACTIVE
 var _timeToDeath = 10;
 
@@ -9,7 +8,6 @@ func _ready():
 	global.tables.append(self);
 	_timeToDeath = rand_range(global.tableDeathTimeMin, global.tableDeathTimeMax);
 	$smokeParticles.emitting = false;
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -26,15 +24,15 @@ func setState(state):
 	elif state == global.TableState.BROKEN:
 		$smokeParticles.emitting = true;
 
-	print("State set to ", state);
+	print("Table ", self, " state set to ", state);
 
 #
 # Should trigger when player enters the trigger zone
 #
 func _on_trigger_area_entered(area):
-	print("player trigger entered");
+	print("player trigger entered ", self);
 	global.activeTable = self;
 
 func _on_trigger_area_exited(area):
-	print("player trigger exited");
+	print("player trigger exited ", self);
 	global.activeTable = null;

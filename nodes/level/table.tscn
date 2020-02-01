@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://objects/computer_table.glb" type="PackedScene" id=1]
 [ext_resource path="res://nodes/level/table.gd" type="Script" id=2]
-[ext_resource path="res://materials/smoke_particle.material" type="Material" id=3]
+[ext_resource path="res://materials/extinguisher_particles.material" type="Material" id=3]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -10,6 +10,9 @@
 
 [sub_resource type="QuadMesh" id=3]
 material = ExtResource( 3 )
+
+[sub_resource type="Gradient" id=4]
+colors = PoolColorArray( 0, 0, 0, 1, 1, 1, 1, 0 )
 
 [node name="table" type="StaticBody"]
 script = ExtResource( 2 )
@@ -51,5 +54,6 @@ linear_accel_random = 0.02
 radial_accel = 1.01
 radial_accel_random = 0.03
 tangential_accel_random = 0.07
+color_ramp = SubResource( 4 )
 [connection signal="area_entered" from="trigger" to="." method="_on_trigger_area_entered"]
 [connection signal="area_exited" from="trigger" to="." method="_on_trigger_area_exited"]

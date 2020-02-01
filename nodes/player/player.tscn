@@ -1,13 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://nodes/player/player.gd" type="Script" id=1]
-[ext_resource path="res://materials/paavo.material" type="Material" id=2]
+[ext_resource path="res://wizard/wizard.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
 
-[sub_resource type="CapsuleMesh" id=2]
-
-[sub_resource type="CylinderShape" id=3]
+[sub_resource type="CylinderShape" id=2]
 
 [node name="player" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -16,13 +14,12 @@ script = ExtResource( 1 )
 transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0.5, 0 )
 shape = SubResource( 1 )
 
-[node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
-mesh = SubResource( 2 )
-material/0 = ExtResource( 2 )
-
 [node name="trigger" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0.5, 0 )
 input_ray_pickable = false
 
 [node name="shape" type="CollisionShape" parent="trigger"]
-shape = SubResource( 3 )
+shape = SubResource( 2 )
+
+[node name="wizard" parent="." instance=ExtResource( 2 )]
+transform = Transform( -0.75, 6.55671e-08, -2.86603e-15, 6.55671e-08, 0.75, 7.10543e-15, 2.86603e-15, 7.10543e-15, -0.75, 0, 0, 1.77636e-15 )

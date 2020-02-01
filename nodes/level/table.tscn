@@ -32,7 +32,7 @@ input_ray_pickable = false
 shape = SubResource( 2 )
 
 [node name="smokeParticles" type="CPUParticles" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0788, -0.965689 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00309226, 0.817318, -0.873932 )
 cast_shadow = 0
 emitting = false
 amount = 16

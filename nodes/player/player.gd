@@ -25,6 +25,7 @@ func clampAbs(num, lim):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print($trigger)
 	pass # Replace with function body.
 
 func handle_movement(delta):
@@ -55,4 +56,12 @@ func handle_movement(delta):
 func _process(delta):
 	handle_movement(delta);
 	move_and_slide(velocity);
+	
+	#
+	# Detect player hitting wall
+	# unused for now
+	#
+	var c = get_slide_count();
+	#if(c > 0):
+	#	print("player hit obstacle")
 	

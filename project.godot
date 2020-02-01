@@ -20,6 +20,10 @@ config/description="A game about manning an average helpdesk"
 run/main_scene="res://nodes/gameworld.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+global="*res://nodes/global.gd"
+
 [display]
 
 window/size/width=1280

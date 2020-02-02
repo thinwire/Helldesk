@@ -34,6 +34,7 @@ func _process(delta):
 			get_tree().reload_current_scene();
 			quit = false;
 	
+	$music.pitch_scale = 1.0 + (1.0 - (float(global.player_health) / 50000.0));
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		quit = true;

@@ -5,7 +5,8 @@
 
 [sub_resource type="CapsuleShape" id=1]
 
-[sub_resource type="CylinderShape" id=2]
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.175356, 1, 0.376854 )
 
 [node name="player" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -14,12 +15,21 @@ script = ExtResource( 1 )
 transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0.5, 0 )
 shape = SubResource( 1 )
 
-[node name="trigger" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0.5, 0 )
-input_ray_pickable = false
-
-[node name="shape" type="CollisionShape" parent="trigger"]
-shape = SubResource( 2 )
-
 [node name="wizard" parent="." instance=ExtResource( 2 )]
 transform = Transform( -0.75, 6.55671e-08, -2.86603e-15, 6.55671e-08, 0.75, 7.10543e-15, 2.86603e-15, 7.10543e-15, -0.75, 0, 0, 1.77636e-15 )
+
+[node name="trigger" type="Area" parent="wizard"]
+transform = Transform( -1.33333, 5.82819e-08, 5.09517e-15, 1.16564e-07, 0.666667, 1.26319e-14, -5.09516e-15, 6.31594e-15, -1.33333, 5.82819e-08, 0.666667, 8.68442e-15 )
+input_ray_pickable = false
+
+[node name="shape" type="CollisionShape" parent="wizard/trigger"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5 )
+shape = SubResource( 2 )
+
+[node name="SpotLight" type="SpotLight" parent="wizard"]
+transform = Transform( -1.33333, 4.82712e-29, -4.34455e-07, -4.11599e-21, 1.33333, -1.52466e-20, 4.34455e-07, -1.77877e-20, -1.33333, 1.34864e-07, 1.54266, 0.0242653 )
+light_color = Color( 0.984314, 0.964706, 0.866667, 1 )
+light_energy = 0.6
+spot_range = 264.4
+spot_angle = 118.3
+spot_angle_attenuation = 1.1487

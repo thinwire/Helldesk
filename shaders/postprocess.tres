@@ -3,36 +3,43 @@
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
-uniform float bright = 1.0;
-uniform float dark   = 0.7;
-uniform float width  = 10.0;
+uniform float scanline_bright = 1.0;
+uniform float scanline_dark   = 0.7;
+uniform float scanline_width  = 10.0;
 
 uniform float wave_freq = 10.0;
 uniform float wave_speed = 6.0;
 
+uniform float chroma_red   = 2;
+uniform float chroma_green = 16;
+uniform float chroma_blue  = 31;
+
+uniform float lens_distort = 5.0;
+
+uniform float lod_red   = 0.0;
+uniform float lod_green = 0.0;
+uniform float lod_blue  = 0.0;
+
 vec3 crt_effect(in vec3 color, in float uv_y, in float pixel_y, in float time) {
 	
-	float a = mod(pixel_y, width);
-	float b = width * .5;
+	float a = mod(pixel_y, scanline_width);
+	float b = scanline_width * .5;
 	float mul = smoothstep(0.5, a, b);
 	
 	float wave = (sin(uv_y * wave_freq + time * wave_speed) + 1.0) * 0.5;
 	
-	vec3 result = clamp(mul + wave * 0.2, dark, bright) * color;
+	vec3 result = clamp(mul + wave * 0.2, scanline_dark, scanline_bright) * color;
 	
 	return result;
 }
 
 vec2 lens_effect(in vec2 p) {
-	p -= 0.5;
-	p *= 2.0;
-
 	// Convert to polar coordinates
 	float theta  = atan(p.y, p.x);
 	float radius = length(p);
 	
 	// Tweak radius
-	radius = pow(radius, 1.05);
+	radius = pow(radius, 1.0 + lens_distort * 0.01);
 
 	// Convert back to texture coordinates
 	p.x = radius * cos(theta);
@@ -41,15 +48,33 @@ vec2 lens_effect(in vec2 p) {
 }
 
 void fragment() {
-	vec3 c = textureLod(SCREEN_TEXTURE, lens_effect(SCREEN_UV), 0.0).rgb;
+	
+	vec2 uv_center = (SCREEN_UV - 0.5) * 2.0;
+	
+	vec2 uv_red   = lens_effect(uv_center * (1.0 + chroma_red   * 0.001));
+	vec2 uv_green = lens_effect(uv_center * (1.0 + chroma_green * 0.001));
+	vec2 uv_blue  = lens_effect(uv_center * (1.0 + chroma_blue  * 0.001));
+	
+	float red = textureLod(SCREEN_TEXTURE, uv_red,   lod_red   * 0.1).r;
+	float grn = textureLod(SCREEN_TEXTURE, uv_green, lod_green * 0.1).g;
+	float blu = textureLod(SCREEN_TEXTURE, uv_red,   lod_blue  * 0.1).b;
+	
+	vec3 c = vec3(red, grn, blu);
 	COLOR.rgb = crt_effect(c, SCREEN_UV.y, (SCREEN_UV / SCREEN_PIXEL_SIZE).y, TIME);
 }
 "
 
 [resource]
 shader = SubResource( 1 )
-shader_param/bright = 1.0
-shader_param/dark = 0.6
-shader_param/width = 5.0
+shader_param/scanline_bright = 1.0
+shader_param/scanline_dark = 0.7
+shader_param/scanline_width = 5.0
 shader_param/wave_freq = 15.0
 shader_param/wave_speed = 5.0
+shader_param/chroma_red = 1.0
+shader_param/chroma_green = 3.0
+shader_param/chroma_blue = 5.0
+shader_param/lens_distort = 1.8
+shader_param/lod_red = 0.0
+shader_param/lod_green = 0.0
+shader_param/lod_blue = 0.0

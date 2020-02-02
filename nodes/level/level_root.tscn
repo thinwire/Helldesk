@@ -2,7 +2,7 @@
 
 [ext_resource path="res://nodes/level/table.tscn" type="PackedScene" id=1]
 [ext_resource path="res://rooms/rooms.tscn" type="PackedScene" id=2]
-[ext_resource path="res://doors/locked_door.glb" type="PackedScene" id=3]
+[ext_resource path="res://doors/locked_door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://server/server.tscn" type="PackedScene" id=4]
 
 [sub_resource type="BoxShape" id=1]
@@ -11,11 +11,10 @@ extents = Vector3( 17.0555, 0.001, 20.3264 )
 [node name="level_root" type="Node"]
 
 [node name="table_1" parent="." instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.68025, 0, 23.4092 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.68025, 0, 20.4092 )
 
 [node name="table_14" parent="." instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.44823, 0, 23.4092 )
-visible = false
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.44823, 0, 20.4092 )
 
 [node name="table_2" parent="." instance=ExtResource( 1 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.68025, 0, 6.89789 )
@@ -27,13 +26,13 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.3555
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 7.35011, 0, 17.7536 )
 
 [node name="table_4" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 7.36162, 0, 23.5418 )
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 7.36162, 0, 20.5418 )
 
 [node name="table_18" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 13.2532, 0, 17.7536 )
 
 [node name="table_17" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 13.2647, 0, 23.5418 )
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 13.2647, 0, 20.5418 )
 
 [node name="table_5" parent="." instance=ExtResource( 1 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.67048, 0, 11.6432 )
@@ -68,10 +67,10 @@ transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 13.2532, 
 [node name="rooms" parent="." instance=ExtResource( 2 )]
 
 [node name="locked_door" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 9.99679, 0, 21.9326 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 25 )
 
 [node name="locked_door2" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, -0.0032053, 0, 31.0655 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 34 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
 

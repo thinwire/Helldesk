@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/locked_door.glb-07f0f3ee5e7a80d8300fd726c13e3c6d.scn"
+path="res://.import/water_cooler.glb-f3341e376f25ab012b00f6fcbb6633c2.scn"
 
 [deps]
 
-source_file="res://objects/locked_door.glb"
-dest_files=[ "res://.import/locked_door.glb-07f0f3ee5e7a80d8300fd726c13e3c6d.scn" ]
+source_file="res://objects/props/water_cooler.glb"
+dest_files=[ "res://.import/water_cooler.glb-f3341e376f25ab012b00f6fcbb6633c2.scn" ]
 
 [params]
 

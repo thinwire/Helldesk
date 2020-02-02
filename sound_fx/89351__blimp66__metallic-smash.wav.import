@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/89351__blimp66__metallic-smash.wav-66af0f5e9ed9415e85502965d0da6f4a.sample"
+
+[deps]
+
+source_file="res://sound_fx/89351__blimp66__metallic-smash.wav"
+dest_files=[ "res://.import/89351__blimp66__metallic-smash.wav-66af0f5e9ed9415e85502965d0da6f4a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

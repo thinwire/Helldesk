@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://objects/props/warning_light.glb" type="PackedScene" id=1]
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "ligth_rotation"
+
+[sub_resource type="AnimationNodeBlendTree" id=4]
+graph_offset = Vector2( -131, -226 )
+nodes/Animation/node = SubResource( 3 )
+nodes/Animation/position = Vector2( 100, 140 )
+node_connections = [ "output", 0, "Animation" ]
+
+[sub_resource type="Animation" id=1]
+resource_name = "ligth_rotation"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Node:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "rotation"
+
+[node name="warning_light" instance=ExtResource( 1 )]
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="0"]
+tree_root = SubResource( 4 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+playback_speed = 1.82
+method_call_mode = 1
+anims/ligth_rotation = SubResource( 1 )
+anims/rotation = SubResource( 2 )
+
+[node name="Node" type="Spatial" parent="." index="2"]
+transform = Transform( -0.987761, 0, 0.155974, 0, 1, 0, -0.155974, 0, -0.987761, 0, 0.227234, 0 )
+
+[node name="SpotLight" type="SpotLight" parent="Node" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000244237, 0.131836, -0.147217 )
+light_color = Color( 0.886275, 0.686275, 0.505882, 1 )
+light_energy = 10.95
+shadow_enabled = true
+spot_range = 6.6
+spot_angle = 56.9
+
+[node name="SpotLight2" type="SpotLight" parent="Node" index="1"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.000244237, 0.131836, -0.147217 )
+light_color = Color( 0.886275, 0.686275, 0.505882, 1 )
+light_energy = 10.95
+shadow_enabled = true
+spot_range = 6.6
+spot_angle = 56.9

@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://objects/computer_table.glb" type="PackedScene" id=1]
 [ext_resource path="res://nodes/level/table.gd" type="Script" id=2]
 [ext_resource path="res://materials/fire.tres" type="Material" id=3]
 [ext_resource path="res://materials/smoke.tres" type="Material" id=4]
+[ext_resource path="res://caveman/caveman.tscn" type="PackedScene" id=5]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -12,7 +13,7 @@
 [sub_resource type="QuadMesh" id=3]
 material = ExtResource( 3 )
 
-[sub_resource type="Curve" id=7]
+[sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 0.0681818 ), 0.0, 0.0, 0, 0, Vector2( 0.349845, 0.777273 ), 0.579545, 0.579545, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="Gradient" id=5]
@@ -22,7 +23,7 @@ colors = PoolColorArray( 0.558105, 0.558105, 0.558105, 1, 1, 1, 1, 1, 1, 1, 1, 1
 [sub_resource type="QuadMesh" id=6]
 material = ExtResource( 4 )
 
-[sub_resource type="Curve" id=4]
+[sub_resource type="Curve" id=7]
 _data = [ Vector2( 0.157895, 0.0090909 ), 0.0, 2.72225, 0, 0, Vector2( 0.73065, 0.871591 ), 0.787066, 0.787066, 0, 0, Vector2( 0.972136, 0.242045 ), 0.0479984, 0.0, 0, 0 ]
 
 [node name="table" type="StaticBody"]
@@ -72,7 +73,7 @@ tangential_accel_random = 0.39
 damping_random = 0.04
 angle = -319.0
 angle_random = 0.5
-scale_amount_curve = SubResource( 7 )
+scale_amount_curve = SubResource( 4 )
 color_ramp = SubResource( 5 )
 
 [node name="smoke" type="CPUParticles" parent="."]
@@ -102,7 +103,10 @@ damping_random = 0.04
 angle = -319.0
 angle_random = 0.5
 scale_amount = 1.5
-scale_amount_curve = SubResource( 4 )
+scale_amount_curve = SubResource( 7 )
 color_ramp = SubResource( 5 )
+
+[node name="caveman" parent="." instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 [connection signal="area_entered" from="trigger" to="." method="_on_trigger_area_entered"]
 [connection signal="area_exited" from="trigger" to="." method="_on_trigger_area_exited"]

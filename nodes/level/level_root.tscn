@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://nodes/level/table.tscn" type="PackedScene" id=1]
 [ext_resource path="res://rooms/rooms.tscn" type="PackedScene" id=2]
 [ext_resource path="res://doors/locked_door.glb" type="PackedScene" id=3]
+[ext_resource path="res://server/server.tscn" type="PackedScene" id=4]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 17.0555, 0.001, 20.3264 )
@@ -14,6 +15,7 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.68025
 
 [node name="table_14" parent="." instance=ExtResource( 1 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.44823, 0, 23.4092 )
+visible = false
 
 [node name="table_2" parent="." instance=ExtResource( 1 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.68025, 0, 6.89789 )
@@ -76,3 +78,6 @@ transform = Transform( 1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, -0.003205
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15382, 0, 14.7753 )
 shape = SubResource( 1 )
+
+[node name="server" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3518, 0.00111246, -1.4141 )

@@ -1,18 +1,40 @@
 extends Node
 
-var lastBroken: int = 0;
+var _lastBudget  = 0;
+var _lastUsers   = 0;
+var _lastServers = 0;
 
 func _ready():
-	lastBroken = 0;
+	_lastUsers   = 0;
+	_lastServers = 0;
+	_lastBudget  = 0;
+	_updateLabels();
 	
-
-func _process(delta):
-	
-	var broken: int = 0;
+func _updateLabels():
+	var users = 0;
 	for t in global.tables:
 		if t.isBroken():
-			broken += 1;
+			users += 1;
+			
+	var servers = 0;
+	for s in global.servers:
+		if s.isBroken():
+			servers += 1;
 	
-	if(broken != lastBroken):
-		$brokenLabel.text = "Broken computers: " + str(broken);
-		lastBroken = broken;
+	var budget = global.player_health;
+	
+	if _lastUsers != users:
+		$userLabel.text = "User error reports: " + str(users);
+		_lastUsers = users;
+		
+	if _lastServers != servers:
+		$serverLabel.text = "Server fault codes: " + str(servers);
+		_lastServers = servers;
+		
+	if _lastBudget != budget:
+		$moneyLabel.text = "IT Dept. Budget: $" + str(budget);
+		_lastBudget = budget;
+
+
+func _process(delta):
+	_updateLabels();

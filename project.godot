@@ -15,8 +15,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Helldesk"
-config/description="A game about manning an average helpdesk"
+config/name="Wizard of OS"
+config/description="A game about the day-to-day of an IT department"
 run/main_scene="res://nodes/gameworld.tscn"
 config/icon="res://icon.png"
 

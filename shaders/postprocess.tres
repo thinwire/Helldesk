@@ -20,6 +20,8 @@ uniform float lod_red   = 0.0;
 uniform float lod_green = 0.0;
 uniform float lod_blue  = 0.0;
 
+uniform float fade = 1.0;
+
 vec3 crt_effect(in vec3 color, in float uv_y, in float pixel_y, in float time) {
 	
 	float a = mod(pixel_y, scanline_width);
@@ -55,9 +57,13 @@ void fragment() {
 	vec2 uv_green = lens_effect(uv_center * (1.0 + chroma_green * 0.001));
 	vec2 uv_blue  = lens_effect(uv_center * (1.0 + chroma_blue  * 0.001));
 	
-	float red = textureLod(SCREEN_TEXTURE, uv_red,   lod_red   * 0.1).r;
-	float grn = textureLod(SCREEN_TEXTURE, uv_green, lod_green * 0.1).g;
-	float blu = textureLod(SCREEN_TEXTURE, uv_red,   lod_blue  * 0.1).b;
+	float fade_inv = 1.0 - fade;
+	fade_inv *= fade_inv;
+	float fade_lod = fade * 10.0;
+	
+	float red = textureLod(SCREEN_TEXTURE, uv_red,   lod_red   * 0.1 + fade_lod).r * fade_inv;
+	float grn = textureLod(SCREEN_TEXTURE, uv_green, lod_green * 0.1 + fade_lod).g * fade_inv;
+	float blu = textureLod(SCREEN_TEXTURE, uv_red,   lod_blue  * 0.1 + fade_lod).b * fade_inv;
 	
 	vec3 c = vec3(red, grn, blu);
 	COLOR.rgb = crt_effect(c, SCREEN_UV.y, (SCREEN_UV / SCREEN_PIXEL_SIZE).y, TIME);
@@ -66,9 +72,9 @@ void fragment() {
 
 [resource]
 shader = SubResource( 1 )
-shader_param/scanline_bright = 1.0
-shader_param/scanline_dark = 0.893
-shader_param/scanline_width = 5.0
+shader_param/scanline_bright = 1.461
+shader_param/scanline_dark = 1.067
+shader_param/scanline_width = 6.0
 shader_param/wave_freq = 15.0
 shader_param/wave_speed = 6.539
 shader_param/chroma_red = -0.491
@@ -78,3 +84,4 @@ shader_param/lens_distort = 1.882
 shader_param/lod_red = 0.0
 shader_param/lod_green = 2.0
 shader_param/lod_blue = 1.0
+shader_param/fade = 0.0

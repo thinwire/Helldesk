@@ -140,30 +140,6 @@ directional_shadow_normal_bias = 0.51
 directional_shadow_bias_split_scale = 0.34
 directional_shadow_max_distance = 150.7
 
-[node name="uiLayer" type="CanvasLayer" parent="."]
-
-[node name="Hud" parent="uiLayer" instance=ExtResource( 8 )]
-
-[node name="menuLayer" type="CanvasLayer" parent="."]
-
-[node name="PauseMenu" parent="menuLayer" instance=ExtResource( 3 )]
-visible = false
-
-[node name="postprocessLayer" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="crtshader" type="TextureRect" parent="postprocessLayer"]
-material = ExtResource( 6 )
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 1923.0
-margin_bottom = 1082.0
-texture = ExtResource( 7 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="door" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 
@@ -250,3 +226,27 @@ transform = Transform( -2.18557e-08, 0.5, -8.14605e-08, 0, -8.14605e-08, -0.5, -
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
 autoplay = true
+
+[node name="uiLayer" type="CanvasLayer" parent="."]
+
+[node name="Hud" parent="uiLayer" instance=ExtResource( 8 )]
+
+[node name="menuLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="menuLayer" instance=ExtResource( 3 )]
+visible = false
+
+[node name="postprocessLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="crtshader" type="TextureRect" parent="postprocessLayer"]
+material = ExtResource( 6 )
+margin_left = -64.0
+margin_top = -64.0
+margin_right = 4032.0
+margin_bottom = 1984.0
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

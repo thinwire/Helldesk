@@ -1,14 +1,14 @@
 extends StaticBody
 
-const timeToAngryMin = 30;
-const timeToAngryMax = 120;
+const timeToAngryMin = 15;
+const timeToAngryMax = 50;
 
-const timeToBreakMin = 15;
-const timeToBreakMax = 45;
+const timeToBreakMin = 10;
+const timeToBreakMax = 25;
 
-const breakageSpeedMin = 0.03;	# How many points per second, at least, computer starts breaking
+const breakageSpeedMin = 0.03;  # How many points per second, at least, computer starts breaking
 const breakageSpeedMax = 0.16;  # How many points per second, at most, computer starts breaking
-const maxBreakage      = 3;  	# How broken can a computer be, max?
+const maxBreakage      = 1.8;   # How broken can a computer be, max?
 
 enum State {
 	WORKING,
@@ -27,6 +27,10 @@ var _targeted      = false;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	# Don't proc if we're not supposed to run yet
+	if global.running == false:
+		return;
 	
 	if _state == State.WORKING:
 		_timeToAngry -= delta;
@@ -49,6 +53,7 @@ func _process(delta):
 			_breakage += _breakageSpeed * 0.5 * delta;
 		if _state == State.BROKEN:
 			_breakage += _breakageSpeed * 0.9 * delta;
+			global.player_health -= 25 * delta;
 	
 	_breakage = clamp(_breakage, 0, maxBreakage);
 	_fixing   = false;
@@ -64,16 +69,23 @@ func setState(state):
 		$smoke.emitting = false;
 		$fire.emitting  = false;
 		$caveman.idle();
+		$computer_table.setState(0);
+	
+	# Note: we can't actually change the state of the computer tables
+	# because we'd need to have unique shaders for every table instance
+	# to be able to have machines bluescreen... :E
 	
 	elif state == State.ANGRY:
 		$smoke.emitting = true;
 		$fire.emitting  = false;
 		$caveman.angry();
+		#$computer_table.setState(1);
 			
 	elif state == State.BROKEN:
 		$smoke.emitting = true;
 		$fire.emitting  = true;
 		$caveman.smash();
+		#$computer_table.setState(2);
 
 func fix(delta):
 	_fixing = true;
@@ -102,5 +114,6 @@ func _on_trigger_area_exited(area):
 
 func _ready():
 	global.tables.append(self);
-	setState(State.WORKING);
 	_targeted = false;
+	_fixing = false;
+	setState(State.WORKING);

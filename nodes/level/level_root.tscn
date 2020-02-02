@@ -99,9 +99,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.72655, 0.00111246, -4.44827 
 [node name="server4" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.0812, 0.00111246, -4.44827 )
 
-[node name="server5" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3999, 0.00111246, -4.44827 )
-
 [node name="server6" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8148, 0.00111246, -4.44827 )
 
@@ -116,18 +113,6 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.4765
 
 [node name="server11" parent="." instance=ExtResource( 4 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.4765, 0.00111246, -0.287645 )
-
-[node name="server10" parent="." instance=ExtResource( 4 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.4765, 0.00111246, 1.03107 )
-
-[node name="server9" parent="." instance=ExtResource( 4 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.4765, 0.00111246, 2.44597 )
-
-[node name="server21" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.38164, 0.00111246, 3.40373 )
-
-[node name="server20" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.38164, 0.00111246, 2.08502 )
 
 [node name="server19" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.38164, 0.00111246, 0.670116 )

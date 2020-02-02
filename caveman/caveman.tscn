@@ -115,7 +115,7 @@ active = true
 parameters/Add2/add_amount = 1.0
 "parameters/Add2 2/add_amount" = 1.0
 parameters/cave_time/scale = 2.0
-parameters/transition/current = 2
+parameters/transition/current = 0
 
 [node name="AnimationPlayer" parent="." index="4"]
 anims/sound_angry = SubResource( 12 )
@@ -130,6 +130,7 @@ max_distance = 5.0
 
 [node name="caveman_audio3D_hit" type="AudioStreamPlayer3D" parent="." index="6"]
 stream = ExtResource( 4 )
+unit_db = -29.5425
 unit_size = 1.9
 max_db = 1.0
 max_distance = 5.0

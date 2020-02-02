@@ -9,6 +9,7 @@
 [sub_resource type="BoxShape" id=1]
 
 [sub_resource type="BoxShape" id=2]
+extents = Vector3( 1, 1, 3.05531 )
 
 [sub_resource type="QuadMesh" id=3]
 material = ExtResource( 3 )
@@ -44,7 +45,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5 )
 input_ray_pickable = false
 
 [node name="shape" type="CollisionShape" parent="trigger"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.25, 0, 0, 0.513321 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.25, 0, 0, 0.244125 )
 shape = SubResource( 2 )
 
 [node name="fire" type="CPUParticles" parent="."]

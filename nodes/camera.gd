@@ -1,6 +1,6 @@
 extends Camera
 
-const height = 1.94;
+const height = 2.6;
 const distance = 3.5;
 const tilt = 0.954;
 

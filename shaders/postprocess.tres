@@ -67,7 +67,7 @@ void fragment() {
 [resource]
 shader = SubResource( 1 )
 shader_param/scanline_bright = 1.0
-shader_param/scanline_dark = 0.7
+shader_param/scanline_dark = 0.893
 shader_param/scanline_width = 5.0
 shader_param/wave_freq = 15.0
 shader_param/wave_speed = 6.539

@@ -7,7 +7,8 @@ var _timeToDeath = 10;
 func _ready():
 	global.tables.append(self);
 	_timeToDeath = rand_range(global.tableDeathTimeMin, global.tableDeathTimeMax);
-	$smokeParticles.emitting = false;
+	$smoke.emitting = false;
+	$fire.emitting = false;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -16,13 +17,17 @@ func _process(delta):
 		if(_timeToDeath < 0):
 			setState(global.TableState.BROKEN);
 
+
+
 func setState(state):
 	self.state = state;
 	if state == global.TableState.ACTIVE:
-		$smokeParticles.emitting = false;
+		$smoke.emitting = false;
+		$fire.emitting = false;
 		_timeToDeath = rand_range(global.tableDeathTimeMin, global.tableDeathTimeMax);
 	elif state == global.TableState.BROKEN:
-		$smokeParticles.emitting = true;
+		$smoke.emitting = true;
+		$fire.emitting = true;
 
 	print("Table ", self, " state set to ", state);
 

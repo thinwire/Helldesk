@@ -1,0 +1,22 @@
+[gd_resource type="SpatialMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://materials/SmokePuff1.png" type="Texture" id=1]
+
+[resource]
+resource_name = "fire"
+flags_transparent = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+params_grow = true
+params_grow_amount = 0.0
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_color = Color( 1, 1, 1, 0.843137 )
+albedo_texture = ExtResource( 1 )
+emission_enabled = true
+emission = Color( 0.827451, 0.521569, 0.192157, 1 )
+emission_energy = 10.09
+emission_operator = 1
+emission_on_uv2 = false
+emission_texture = ExtResource( 1 )

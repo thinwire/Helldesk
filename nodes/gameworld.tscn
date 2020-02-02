@@ -27,8 +27,11 @@ tonemap_mode = 2
 tonemap_exposure = 0.92
 ssao_enabled = true
 glow_enabled = true
-glow_bloom = 0.05
-glow_hdr_threshold = 1.53
+glow_intensity = 0.75
+glow_strength = 0.94
+glow_bloom = 0.02
+glow_blend_mode = 0
+glow_hdr_threshold = 1.62
 
 [node name="gameworld" type="Node"]
 script = ExtResource( 5 )
@@ -38,7 +41,7 @@ script = ExtResource( 5 )
 [node name="level_root" parent="." instance=ExtResource( 2 )]
 
 [node name="camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 13 )
 environment = SubResource( 2 )
 fov = 58.0
 far = 250.0
@@ -145,7 +148,8 @@ layer = 2
 
 [node name="crtshader" type="TextureRect" parent="postprocessLayer"]
 material = ExtResource( 6 )
-margin_right = 1280.0
+margin_left = 1.0
+margin_right = 1281.0
 margin_bottom = 720.0
 texture = ExtResource( 7 )
 expand = true

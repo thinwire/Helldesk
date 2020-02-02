@@ -23,11 +23,25 @@ vec3 crt_effect(in vec3 color, in float uv_y, in float pixel_y, in float time) {
 	return result;
 }
 
-//
-// Apply a 
-//
+vec2 lens_effect(in vec2 p) {
+	p -= 0.5;
+	p *= 2.0;
+
+	// Convert to polar coordinates
+	float theta  = atan(p.y, p.x);
+	float radius = length(p);
+	
+	// Tweak radius
+	radius = pow(radius, 1.05);
+
+	// Convert back to texture coordinates
+	p.x = radius * cos(theta);
+	p.y = radius * sin(theta);
+	return 0.5 * (p + 1.0);
+}
+
 void fragment() {
-	vec3 c = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0).rgb;
+	vec3 c = textureLod(SCREEN_TEXTURE, lens_effect(SCREEN_UV), 0.0).rgb;
 	COLOR.rgb = crt_effect(c, SCREEN_UV.y, (SCREEN_UV / SCREEN_PIXEL_SIZE).y, TIME);
 }
 "

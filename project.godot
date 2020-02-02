@@ -17,7 +17,8 @@ _global_script_class_icons={
 
 config/name="Wizard of OS"
 config/description="A game about the day-to-day of an IT department"
-run/main_scene="res://nodes/gameworld.tscn"
+run/main_scene="res://nodes/ui/MainMenu.tscn"
+boot_splash/image="res://bootsplash.png"
 config/icon="res://icon.png"
 
 [autoload]
@@ -29,7 +30,7 @@ global="*res://nodes/global.gd"
 window/size/width=1920
 window/size/height=1080
 window/size/resizable=false
-window/size/fullscreen=true
+window/size/borderless=true
 
 [gdnative]
 

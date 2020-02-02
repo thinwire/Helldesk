@@ -29,7 +29,7 @@ func clampAbs(num, lim):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("Player trigger ID ", $trigger)
+	pass;
 
 func handle_movement(delta):
 	var dx = 0.0;
@@ -95,4 +95,3 @@ func _process(delta):
 	if Input.is_action_pressed("ui_accept"):
 		$wizard.extinguish();
 		
-	

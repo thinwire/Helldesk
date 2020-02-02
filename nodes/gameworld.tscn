@@ -1,12 +1,11 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://nodes/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/level/level_root.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/ui/PauseMenu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/camera.gd" type="Script" id=4]
 [ext_resource path="res://nodes/gameworld.gd" type="Script" id=5]
-[ext_resource path="res://shaders/postprocess.tres" type="Material" id=6]
-[ext_resource path="res://textures/paavo.png" type="Texture" id=7]
+[ext_resource path="res://shaders/postprocessLayer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/ui/Hud.tscn" type="PackedScene" id=8]
 [ext_resource path="res://doors/door.tscn" type="PackedScene" id=9]
 [ext_resource path="res://clutter/chair.tscn" type="PackedScene" id=10]
@@ -133,7 +132,6 @@ light_color = Color( 0.521569, 0.572549, 0.603922, 1 )
 light_energy = 0.61
 light_indirect_energy = 1.21
 light_specular = 0.31
-shadow_enabled = true
 shadow_bias = 0.0
 directional_shadow_blend_splits = true
 directional_shadow_normal_bias = 0.51
@@ -150,10 +148,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25 )
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0, 0 )
 
 [node name="warning_light" parent="." instance=ExtResource( 11 )]
-transform = Transform( 0.469456, 0, -0.882956, -0.882956, -4.37114e-08, -0.469456, -3.85952e-08, 1, -2.05206e-08, 0.251388, 2.03357, -5.03931 )
+transform = Transform( 0.469456, 0, -0.882956, -0.882956, -4.37114e-08, -0.469456, -3.85952e-08, 1, -2.05206e-08, 0.251388, 2.03357, -4.98609 )
 
 [node name="warning_light2" parent="." instance=ExtResource( 11 )]
-transform = Transform( 0.469456, 0, -0.882956, -0.882956, -4.37114e-08, -0.469456, -3.85952e-08, 1, -2.05206e-08, 10, 2.03357, -5.03931 )
+transform = Transform( 0.469456, 0, -0.882956, 7.71904e-08, -1, 4.10412e-08, -0.882956, -8.74228e-08, -0.469456, 10.5301, 2.28191, -1.75233 )
 
 [node name="clutter" type="Node" parent="."]
 
@@ -209,6 +207,12 @@ transform = Transform( 0.469456, 0, -0.882956, 0, 1, 0, 0.882956, 0, 0.469456, 7
 transform = Transform( -0.302529, 0, -0.26168, 0, 0.4, 0, 0.26168, 0, -0.302529, 13.5778, 0, 6.1377 )
 
 [node name="water_cooler2" parent="clutter" instance=ExtResource( 14 )]
+transform = Transform( 0.389851, 0, 0.0895313, 0, 0.4, 0, -0.0895313, 0, 0.389851, -4.6314, 0.0947428, 27.1177 )
+
+[node name="water_cooler5" parent="clutter" instance=ExtResource( 14 )]
+transform = Transform( -0.399995, 0, -0.00190593, 0, 0.4, 0, 0.00190593, 0, -0.399995, 2.05216, 0.253839, 27.6532 )
+
+[node name="water_cooler4" parent="clutter" instance=ExtResource( 14 )]
 transform = Transform( 0.389851, 0, 0.0895313, 0, 0.4, 0, -0.0895313, 0, 0.389851, -3.57946, 0, 22.3562 )
 
 [node name="water_cooler3" parent="clutter" instance=ExtResource( 14 )]
@@ -223,8 +227,12 @@ transform = Transform( 0.5, 0, 0, 0, -8.14605e-08, -0.5, 0, 0.5, -8.14605e-08, 7
 [node name="hell3" parent="clutter" instance=ExtResource( 13 )]
 transform = Transform( -2.18557e-08, 0.5, -8.14605e-08, 0, -8.14605e-08, -0.5, -0.5, -2.18557e-08, 3.56075e-15, -4.8379, 1.41762, 17.2579 )
 
+[node name="hell4" parent="clutter" instance=ExtResource( 13 )]
+transform = Transform( 0.5, 5.32907e-15, 1.69407e-21, 0, -8.14605e-08, -0.5, -5.32907e-15, 0.5, -8.14605e-08, -3.42289, 1.11058, 25.1743 )
+
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
+volume_db = -16.919
 autoplay = true
 
 [node name="uiLayer" type="CanvasLayer" parent="."]
@@ -236,17 +244,4 @@ autoplay = true
 [node name="PauseMenu" parent="menuLayer" instance=ExtResource( 3 )]
 visible = false
 
-[node name="postprocessLayer" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="crtshader" type="TextureRect" parent="postprocessLayer"]
-material = ExtResource( 6 )
-margin_left = -64.0
-margin_top = -64.0
-margin_right = 4032.0
-margin_bottom = 1984.0
-texture = ExtResource( 7 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="postprocessLayer" parent="." instance=ExtResource( 6 )]

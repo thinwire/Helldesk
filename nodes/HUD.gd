@@ -36,5 +36,5 @@ func _updateLabels():
 		_lastBudget = budget;
 
 
-func _process(delta):
+func _process(_delta):
 	_updateLabels();

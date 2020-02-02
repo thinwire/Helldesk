@@ -4,8 +4,12 @@ extends Node
 # Player related stuff
 #
 
-var player_health: int = 50000;
+const MAX_MONEY = 75000;
+
+var player_health: int = MAX_MONEY;
 var player: KinematicBody = null;
+
+var session_time: float = 0.0;
 
 var running: bool = false;
 
@@ -25,4 +29,4 @@ func reset():
 	activeTable = null;
 	servers = [];
 	activeServer = null;
-	player_health = 50000;
+	player_health = MAX_MONEY;

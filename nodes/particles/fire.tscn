@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://materials/fire.tres" type="Material" id=1]
+
+[sub_resource type="QuadMesh" id=1]
+material = ExtResource( 1 )
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0.0681818 ), 0.0, 0.0, 0, 0, Vector2( 0.349845, 0.777273 ), 0.579545, 0.579545, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.303333, 0.56, 0.81, 1 )
+colors = PoolColorArray( 0.558105, 0.558105, 0.558105, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.0233333, 0.0233333, 0.0233333, 1, 1, 1, 1, 0 )
+
+[node name="fire" type="CPUParticles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00309226, 0.876632, -0.576871 )
+cast_shadow = 0
+emitting = false
+amount = 20
+lifetime = 1.37
+randomness = 0.51
+lifetime_randomness = 0.46
+draw_order = 2
+mesh = SubResource( 1 )
+direction = Vector3( 1, 1, 0 )
+spread = 31.26
+flatness = 0.72
+gravity = Vector3( 0, 1.935, 0 )
+initial_velocity_random = 1.0
+angular_velocity = 153.36
+angular_velocity_random = 0.66
+linear_accel = -1.01
+linear_accel_random = 0.02
+radial_accel = 1.01
+radial_accel_random = 0.03
+tangential_accel = -20.36
+tangential_accel_random = 0.39
+damping_random = 0.04
+angle = -319.0
+angle_random = 0.5
+scale_amount_curve = SubResource( 2 )
+color_ramp = SubResource( 3 )

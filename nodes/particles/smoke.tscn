@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://materials/smoke.tres" type="Material" id=1]
+
+[sub_resource type="QuadMesh" id=4]
+material = ExtResource( 1 )
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0.157895, 0.0090909 ), 0.0, 2.72225, 0, 0, Vector2( 0.73065, 0.871591 ), 0.787066, 0.787066, 0, 0, Vector2( 0.972136, 0.242045 ), 0.0479984, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.303333, 0.56, 0.81, 1 )
+colors = PoolColorArray( 0.558105, 0.558105, 0.558105, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.0233333, 0.0233333, 0.0233333, 1, 1, 1, 1, 0 )
+
+[node name="smoke" type="CPUParticles"]
+transform = Transform( 2.19709, 0, 0, 0, 2.19709, 0, 0, 0, 2.19709, 0.0106501, 0.830705, -0.561076 )
+cast_shadow = 0
+emitting = false
+amount = 24
+lifetime = 2.31
+speed_scale = 0.4
+lifetime_randomness = 0.24
+draw_order = 2
+mesh = SubResource( 4 )
+direction = Vector3( 1, 1, 0 )
+spread = 31.26
+flatness = 0.72
+gravity = Vector3( 0, 1.935, 0 )
+initial_velocity_random = 1.0
+angular_velocity = 153.36
+angular_velocity_random = 0.66
+linear_accel = -1.01
+linear_accel_random = 0.02
+radial_accel = 1.01
+radial_accel_random = 0.03
+tangential_accel = -20.36
+tangential_accel_random = 0.39
+damping_random = 0.04
+angle = -319.0
+angle_random = 0.5
+scale_amount = 1.5
+scale_amount_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )

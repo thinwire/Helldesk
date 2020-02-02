@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://bootsplash.png" type="Texture" id=1]
+[ext_resource path="res://textures/studiologo.png" type="Texture" id=2]
+[ext_resource path="res://shaders/postprocessLayer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/ui/MainMenu.gd" type="Script" id=4]
+[ext_resource path="res://textures/start game button.png" type="Texture" id=5]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="background" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="studiologo" type="Node2D" parent="."]
+position = Vector2( 234.023, 949.725 )
+
+[node name="logo" type="TextureRect" parent="studiologo"]
+margin_left = -243.111
+margin_top = -111.331
+margin_right = 268.889
+margin_bottom = 112.669
+rect_pivot_offset = Vector2( 256, 64 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="startButton" type="TextureButton" parent="."]
+margin_left = 1001.98
+margin_top = 106.787
+margin_right = 1860.98
+margin_bottom = 362.787
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="postprocessLayer" parent="." instance=ExtResource( 3 )]
+[connection signal="pressed" from="startButton" to="." method="_on_startButton_pressed"]

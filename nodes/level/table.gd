@@ -102,12 +102,12 @@ func isBroken():
 #
 # Should trigger when player enters the trigger zone
 #
-func _on_trigger_area_entered(area):
+func _on_trigger_area_entered(_area):
 	print("player trigger entered ", self);
 	_targeted = true;
 	
 
-func _on_trigger_area_exited(area):
+func _on_trigger_area_exited(_area):
 	print("player trigger exited ", self);
 	_targeted = false;
 	

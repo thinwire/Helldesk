@@ -11,15 +11,8 @@ var player: KinematicBody = null;
 # Table related stuff
 #
 
-enum TableState {
-	ACTIVE,
-	BROKEN
-}
-
-var tableDeathTimeMin = 5;		# min time to wait before breaking computer
-var tableDeathTimeMax = 15;		# max time to wait before breaking computer
-
 var tables = [];
 var activeTable: Node = null;
 
-
+var servers = [];
+var activeServe: Node = null;

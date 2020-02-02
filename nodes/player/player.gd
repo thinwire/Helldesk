@@ -89,6 +89,10 @@ func _process(delta):
 	var speed = handle_movement(delta);
 	handle_animation(speed);
 	
+	# Show extinguisher effect
+	# Actual fixing of table is handled in the tables themselves now
+	# Because that's not fucky at all
 	if Input.is_action_pressed("ui_accept"):
 		$wizard.extinguish();
+		
 	

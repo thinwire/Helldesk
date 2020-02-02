@@ -10,7 +10,7 @@ func _process(delta):
 	
 	var broken: int = 0;
 	for t in global.tables:
-		if t.state == global.TableState.BROKEN:
+		if t.isBroken():
 			broken += 1;
 	
 	if(broken != lastBroken):

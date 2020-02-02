@@ -1,27 +1,33 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://caveman/caveman.glb" type="PackedScene" id=1]
 [ext_resource path="res://sound_fx/peliaani 4.wav" type="AudioStream" id=2]
+[ext_resource path="res://caveman/caveman.gd" type="Script" id=3]
 [ext_resource path="res://sound_fx/380493__euphrosyyn__sfx-destruction-ice-x04.wav" type="AudioStream" id=4]
 
-[sub_resource type="CapsuleShape" id=14]
+[sub_resource type="CapsuleShape" id=1]
 radius = 0.600814
 height = 0.544429
 
-[sub_resource type="AnimationNodeAdd2" id=15]
+[sub_resource type="AnimationNodeAdd2" id=2]
 
-[sub_resource type="AnimationNodeAdd2" id=8]
+[sub_resource type="AnimationNodeAdd2" id=3]
 
-[sub_resource type="AnimationNodeAnimation" id=16]
+[sub_resource type="AnimationNodeAnimation" id=4]
 animation = "sound_club_hit"
 
-[sub_resource type="AnimationNodeAnimation" id=2]
+[sub_resource type="AnimationNodeAnimation" id=5]
 animation = "caveman_angry-loop"
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=6]
 animation = "sound_angry"
 
-[sub_resource type="AnimationNodeTransition" id=3]
+[sub_resource type="AnimationNodeTimeScale" id=7]
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "caveman_smash-loop"
+
+[sub_resource type="AnimationNodeTransition" id=9]
 input_count = 3
 xfade_time = 1.0
 input_0/name = "typing"
@@ -31,39 +37,33 @@ input_1/auto_advance = false
 input_2/name = "smash"
 input_2/auto_advance = false
 
-[sub_resource type="AnimationNodeTimeScale" id=4]
-
-[sub_resource type="AnimationNodeAnimation" id=5]
-animation = "caveman_smash-loop"
-
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "caveman_typing-loop"
 
-[sub_resource type="AnimationNodeBlendTree" id=7]
-graph_offset = Vector2( -578, -16 )
-nodes/Add2/node = SubResource( 8 )
+[sub_resource type="AnimationNodeBlendTree" id=11]
+graph_offset = Vector2( 0, -63.5 )
+nodes/Add2/node = SubResource( 3 )
 nodes/Add2/position = Vector2( -60, 60 )
-"nodes/Add2 2/node" = SubResource( 15 )
+"nodes/Add2 2/node" = SubResource( 2 )
 "nodes/Add2 2/position" = Vector2( -22, 282 )
-nodes/Animation/node = SubResource( 16 )
+nodes/Animation/node = SubResource( 4 )
 nodes/Animation/position = Vector2( -340, 520 )
-nodes/angry/node = SubResource( 2 )
+nodes/angry/node = SubResource( 5 )
 nodes/angry/position = Vector2( -360, 180 )
-nodes/angry_sound/node = SubResource( 9 )
+nodes/angry_sound/node = SubResource( 6 )
 nodes/angry_sound/position = Vector2( -360, 280 )
-nodes/cave_Transition/node = SubResource( 3 )
-nodes/cave_Transition/position = Vector2( 280, 20 )
-nodes/cave_time/node = SubResource( 4 )
+nodes/cave_time/node = SubResource( 7 )
 nodes/cave_time/position = Vector2( 520, 140 )
 nodes/output/position = Vector2( 700, 160 )
-nodes/smash/node = SubResource( 5 )
+nodes/smash/node = SubResource( 8 )
 nodes/smash/position = Vector2( -360, 380 )
-nodes/typing/node = SubResource( 6 )
+nodes/transition/node = SubResource( 9 )
+nodes/transition/position = Vector2( 280, 20 )
+nodes/typing/node = SubResource( 10 )
 nodes/typing/position = Vector2( -280, -60 )
-node_connections = [ "output", 0, "cave_time", "cave_Transition", 0, "typing", "cave_Transition", 1, "Add2", "cave_Transition", 2, "Add2 2", "cave_time", 0, "cave_Transition", "Add2 2", 0, "smash", "Add2 2", 1, "Animation", "Add2", 0, "angry", "Add2", 1, "angry_sound" ]
+node_connections = [ "output", 0, "cave_time", "transition", 0, "typing", "transition", 1, "Add2", "transition", 2, "Add2 2", "cave_time", 0, "transition", "Add2", 0, "angry", "Add2", 1, "angry_sound", "Add2 2", 0, "smash", "Add2 2", 1, "Animation" ]
 
-[sub_resource type="Animation" id=10]
-resource_name = "sound_angry"
+[sub_resource type="Animation" id=12]
 length = 4.01
 loop = true
 tracks/0/type = "audio"
@@ -100,24 +100,25 @@ tracks/0/keys = {
 }
 
 [node name="caveman" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
 
 [node name="StaticBody" type="StaticBody" parent="." index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody" index="0"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.77645, 0 )
-shape = SubResource( 14 )
+shape = SubResource( 1 )
 
 [node name="cave_animation" type="AnimationTree" parent="." index="3"]
-tree_root = SubResource( 7 )
+tree_root = SubResource( 11 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/Add2/add_amount = 1.0
 "parameters/Add2 2/add_amount" = 1.0
-parameters/cave_Transition/current = 2
 parameters/cave_time/scale = 2.0
+parameters/transition/current = 2
 
 [node name="AnimationPlayer" parent="." index="4"]
-anims/sound_angry = SubResource( 10 )
+anims/sound_angry = SubResource( 12 )
 anims/sound_club_hit = SubResource( 13 )
 
 [node name="caveman_audio3D_angry" type="AudioStreamPlayer3D" parent="." index="5"]

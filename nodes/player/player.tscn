@@ -6,7 +6,7 @@
 [sub_resource type="CapsuleShape" id=1]
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 0.175356, 1, 0.376854 )
+extents = Vector3( 0.175356, 1, 1.1 )
 
 [node name="player" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -23,5 +23,5 @@ transform = Transform( -1.33333, 5.82819e-08, 5.09517e-15, 1.16564e-07, 0.666667
 input_ray_pickable = false
 
 [node name="shape" type="CollisionShape" parent="wizard/trigger"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5 )
+transform = Transform( 1, 5.38099e-42, 3.23117e-27, 2.1684e-19, 1, 0, 0, 0, 1, -6.98802e-21, 0, -1.05808 )
 shape = SubResource( 2 )

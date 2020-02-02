@@ -204,9 +204,6 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 7.96582, 0, 16.5958 )
 [node name="plant8" parent="clutter" instance=ExtResource( 12 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 13.0587, 0, 15.7377 )
 
-[node name="hell" parent="clutter/plant8" instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -28.9065, 2.06885, -41.5146 )
-
 [node name="chair" parent="clutter" instance=ExtResource( 10 )]
 transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -1.7753, -4.76837e-07, 8.01204 )
 
@@ -230,3 +227,12 @@ transform = Transform( -0.302529, 0, -0.26168, 0, 0.4, 0, 0.26168, 0, -0.302529,
 
 [node name="water_cooler2" parent="clutter" instance=ExtResource( 14 )]
 transform = Transform( 0.389851, 0, 0.0895313, 0, 0.4, 0, -0.0895313, 0, 0.389851, -3.57946, 0, 22.3562 )
+
+[node name="hell" parent="clutter" instance=ExtResource( 13 )]
+transform = Transform( 0.5, 0, 0, 0, -8.14605e-08, -0.5, 0, 0.5, -8.14605e-08, 0.235017, 1.03443, -5.0196 )
+
+[node name="hell2" parent="clutter" instance=ExtResource( 13 )]
+transform = Transform( 0.5, 0, 0, 0, -8.14605e-08, -0.5, 0, 0.5, -8.14605e-08, 10.3169, 1.31071, 5.15342 )
+
+[node name="hell3" parent="clutter" instance=ExtResource( 13 )]
+transform = Transform( -2.18557e-08, 0.5, -8.14605e-08, 0, -8.14605e-08, -0.5, -0.5, -2.18557e-08, 3.56075e-15, -4.87371, 1.41762, 17.2579 )

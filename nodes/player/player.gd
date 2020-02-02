@@ -34,11 +34,14 @@ func _ready():
 func handle_movement(delta):
 	var dx = 0.0;
 	var dz = 0.0;
+
+	var fire = float(Input.is_action_pressed("ui_accept"));
 	
-	dx -= float(Input.is_action_pressed("ui_left"));
-	dx += float(Input.is_action_pressed("ui_right"));
-	dz -= float(Input.is_action_pressed("ui_up"));
-	dz += float(Input.is_action_pressed("ui_down"));
+	if fire == 0.0:	
+		dx -= float(Input.is_action_pressed("ui_left"));
+		dx += float(Input.is_action_pressed("ui_right"));
+		dz -= float(Input.is_action_pressed("ui_up"));
+		dz += float(Input.is_action_pressed("ui_down"));
 
 	if (dx == 0.0): 
 		velocity.x = toZero(velocity.x, decel * delta);
